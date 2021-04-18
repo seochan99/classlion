@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from firstapp import views
-
+from firstapp import views as first 
+from wordCount import views as wc # views이름 중복시 에러 발생  그래서 as로 이름을 바꾼다 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.welcome,name="welcome"),
-    path("hello/",views.hello,name="hello")
+    path("",first.welcome,name="welcome"),
+    path("hello/",first.hello,name="hello"),
+    path("wc/",wc.home,name="wc"),
+    path("wc/result/",wc.result,name="result"),
 ]
